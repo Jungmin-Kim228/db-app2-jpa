@@ -41,4 +41,4 @@ create table if not exists Views (
      primary key(post_no, user_no)
     );
 
-merge into `Posts` key (`post_no`) values (1, 1, 'title1', 'content1', now(), null, false, 0, 0, 'fileName');
+-- merge into `Posts` key (`post_no`) values (1, 1, 'title1', 'content1', now(), null, false, 0, 0, 'fileName');

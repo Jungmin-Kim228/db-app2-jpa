@@ -52,6 +52,7 @@ public class PostEntityTest {
 //        entityManager.flush();
 
         Post post2 = entityManager.find(Post.class, 1);
-        assertThat(post2.getPostNo().intValue()).isOne();
+        assertThat(post2).isEqualTo(post1);
+
     }
 }
