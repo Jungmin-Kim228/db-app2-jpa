@@ -25,17 +25,13 @@ import lombok.Setter;
 @Entity
 @Table(name = "Comments")
 public class Comment {
-    @EmbeddedId
-    private Pk pk;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="comment_no")
     private Integer commentNo;
 
-    @MapsId("postNo")
-    @ManyToOne
-    @JoinColumn(name = "post_no")
+    @Column(name = "post_no")
     private Post post;
 
     @Column(name = "user_no")
@@ -43,18 +39,4 @@ public class Comment {
 
     @Column(name = "comment_content")
     private String commentContent;
-
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @EqualsAndHashCode
-    @Getter
-    @Setter
-    @Embeddable
-    public static class Pk implements Serializable {
-        @Column(name = "comment_no")
-        private Integer commentNo;
-
-        @Column(name = "post_no")
-        private Integer postNo;
-    }
 }

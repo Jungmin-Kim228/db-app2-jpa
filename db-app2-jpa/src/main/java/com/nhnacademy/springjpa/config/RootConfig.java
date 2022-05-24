@@ -20,10 +20,10 @@ public class RootConfig {
         dataSource.setUsername("nhn_academy_8");
         dataSource.setPassword("zq#ueLhsLMT258C?");
 
-        dataSource.setInitialSize(10);
-        dataSource.setMaxTotal(10);
-        dataSource.setMinIdle(10);
-        dataSource.setMaxIdle(10);
+        dataSource.setInitialSize(5);
+        dataSource.setMaxTotal(5);
+        dataSource.setMinIdle(5);
+        dataSource.setMaxIdle(5);
 
         dataSource.setMaxWaitMillis(1000);
 
