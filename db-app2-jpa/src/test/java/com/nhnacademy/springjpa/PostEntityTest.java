@@ -38,7 +38,6 @@ public class PostEntityTest {
     @Test
     void postRegisterAndSelectTest() {
         Post post1 = new Post();
-        post1.setPostNo(1);
         post1.setUserNo(1);
         post1.setPostTitle("title1");
         post1.setPostContent("content1");
@@ -49,8 +48,9 @@ public class PostEntityTest {
         post1.setFileName("fileName");
 
         entityManager.persist(post1);
-//        entityManager.flush();
+        entityManager.flush();
 
+        System.out.println(post1.getPostNo());
         Post post2 = entityManager.find(Post.class, 1);
         assertThat(post2).isEqualTo(post1);
 
