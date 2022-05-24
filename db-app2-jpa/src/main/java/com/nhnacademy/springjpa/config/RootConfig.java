@@ -21,10 +21,10 @@ public class RootConfig {
         dataSource.setUsername("sa");
         dataSource.setPassword("");
 
-        dataSource.setInitialSize(5);
-        dataSource.setMaxTotal(5);
-        dataSource.setMinIdle(5);
-        dataSource.setMaxIdle(5);
+        dataSource.setInitialSize(10);
+        dataSource.setMaxTotal(10);
+        dataSource.setMinIdle(10);
+        dataSource.setMaxIdle(10);
 
         dataSource.setMaxWaitMillis(1000);
 
