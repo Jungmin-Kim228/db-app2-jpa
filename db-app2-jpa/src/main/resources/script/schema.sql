@@ -42,4 +42,3 @@ create table if not exists Views (
     );
 
 merge into `Posts` key (`post_no`) values (1, 1, 'title1', 'content1', now(), null, false, 0, 0, 'fileName');
-

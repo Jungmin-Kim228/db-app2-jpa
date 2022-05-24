@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "Posts")
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_no")
     private Integer postNo;
 
