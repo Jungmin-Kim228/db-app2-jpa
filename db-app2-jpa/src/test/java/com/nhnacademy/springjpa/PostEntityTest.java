@@ -5,12 +5,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Post;
+import com.nhnacademy.springjpa.entity.User;
+import com.nhnacademy.springjpa.repository.CommentRepository;
+import com.nhnacademy.springjpa.repository.PostRepository;
+import com.nhnacademy.springjpa.repository.UserRepository;
+import java.util.Arrays;
 import java.util.Date;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -26,33 +29,44 @@ import org.springframework.transaction.annotation.Transactional;
     @ContextConfiguration(classes = WebConfig.class)
 })
 public class PostEntityTest {
-    @PersistenceContext
-    EntityManager entityManager;
+    @Autowired
+    PostRepository postRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
     @Test
     void test() {
-        Post post = entityManager.find(Post.class, 1);
-        assertThat(post.getPostNo().intValue()).isEqualTo(1);
-    }
+        User user1 = new User();
+        user1.setUserId("user1Id");
+        user1.setUserPw("user1Pw");
+        user1.setCheckAdmin(false);
 
-    @Test
-    void postRegisterAndSelectTest() {
         Post post1 = new Post();
-        post1.setUserNo(1);
-        post1.setPostTitle("title1");
-        post1.setPostContent("content1");
+        post1.setUser(user1);
+        post1.setPostTitle("post1Title");
+        post1.setPostContent("post1Content");
         post1.setPostWriteDateTime(new Date());
         post1.setPostCheckHide(false);
         post1.setParent(0);
         post1.setDepth(0);
-        post1.setFileName("fileName");
 
-        entityManager.persist(post1);
-        entityManager.flush();
+        Post post2 = new Post();
+        post2.setUser(user1);
+        post2.setPostTitle("post2Title");
+        post2.setPostContent("post2Content");
+        post2.setPostWriteDateTime(new Date());
+        post2.setPostCheckHide(false);
+        post2.setParent(0);
+        post2.setDepth(0);
 
-        System.out.println(post1.getPostNo());
-        Post post2 = entityManager.find(Post.class, 1);
-        assertThat(post2).isEqualTo(post1);
-
+        userRepository.save(user1);
+        postRepository.saveAll(Arrays.asList(post1, post2));
+        assertThat(post2.getUser().getUserId()).isEqualTo("user1Id");
+        postRepository.flush();
     }
+
 }

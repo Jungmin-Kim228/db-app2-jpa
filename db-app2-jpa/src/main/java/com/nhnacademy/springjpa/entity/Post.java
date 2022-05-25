@@ -58,9 +58,11 @@ public class Post {
     @Column(name = "file_name")
     private String fileName;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "post")
     private List<Good> goods;
+
+
 }

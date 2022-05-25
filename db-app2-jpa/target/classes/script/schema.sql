@@ -16,7 +16,7 @@ create table if not exists Posts (
     post_check_hide boolean not null,
     parent int not null,
     re_depth int not null,
-    file_name varchar(50) not null,
+    file_name varchar(50) null,
     primary key(post_no)
     );
 
@@ -28,11 +28,11 @@ create table if not exists Comments (
     primary key(comment_no, post_no)
     );
 
-create table if not exists Likes (
-     like_no int not null auto_increment,
+create table if not exists Goods (
+     good_no int not null auto_increment,
      post_no int not null,
      user_no int not null,
-     primary key(like_no, post_no)
+     primary key(good_no, post_no)
     );
 
 create table if not exists Views (
