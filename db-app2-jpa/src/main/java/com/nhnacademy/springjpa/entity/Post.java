@@ -60,4 +60,7 @@ public class Post {
 
     @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+    private List<Good> goods;
 }

@@ -38,4 +38,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Good> goods;
 }
