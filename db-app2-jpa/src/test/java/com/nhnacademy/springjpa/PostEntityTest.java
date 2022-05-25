@@ -11,6 +11,9 @@ import com.nhnacademy.springjpa.repository.PostRepository;
 import com.nhnacademy.springjpa.repository.UserRepository;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +33,10 @@ import org.springframework.transaction.annotation.Transactional;
 })
 public class PostEntityTest {
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    CommentRepository commentRepository;
+    private UserRepository userRepository;
 
     @Test
     void test() {
