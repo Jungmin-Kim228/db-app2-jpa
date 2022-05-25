@@ -1,10 +1,13 @@
 package com.nhnacademy.springjpa.entity;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,4 +32,10 @@ public class User {
 
     @Column(name = "check_admin")
     private Boolean checkAdmin;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Comment> comments;
 }

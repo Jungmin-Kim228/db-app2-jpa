@@ -16,7 +16,7 @@ create table if not exists Posts (
     post_check_hide boolean not null,
     parent int not null,
     re_depth int not null,
-    file_name varchar(50) not null,
+    file_name varchar(50) null,
     primary key(post_no)
     );
 
