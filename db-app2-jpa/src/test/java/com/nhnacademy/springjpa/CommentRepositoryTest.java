@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
-import com.nhnacademy.springjpa.domain.CommentDto;
 import com.nhnacademy.springjpa.repository.CommentRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -27,10 +26,10 @@ public class CommentRepositoryTest {
     @Autowired
     CommentRepository commentRepository;
 
-    @Test
-    void Test() {
-        List<CommentDto> commentDtos = commentRepository.getCommentsByPost_PostNo(1);
-        assertThat(commentDtos.get(0).getCommentContent()).isEqualTo("ㅇㅈ");
-        System.out.println(commentDtos.get(0).getUser().getUserId());
-    }
+//    @Test
+//    void Test() {
+//        List<CommentDto> commentDtos = commentRepository.getCommentsByPost_PostNo(1);
+//        assertThat(commentDtos.get(0).getCommentContent()).isEqualTo("ㅇㅈ");
+//        System.out.println(commentDtos.get(0).getUser().getUserId());
+//    }
 }

@@ -46,3 +46,9 @@ Content-Type: application/json
 GET /posts?page=0&size=3
 Host: localhost:8080
 Content-Type: application/json
+
+###
+# get comments paging
+GET /comments/1?page=0&size=2
+Host: localhost:8080
+Content-Type: application/json

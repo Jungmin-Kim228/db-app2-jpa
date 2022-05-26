@@ -2,14 +2,12 @@ package com.nhnacademy.springjpa.service;
 
 import com.nhnacademy.springjpa.domain.post.PostDto;
 import com.nhnacademy.springjpa.domain.post.PostModifyDto;
-import com.nhnacademy.springjpa.domain.post.PostModifyRequest;
-import com.nhnacademy.springjpa.domain.post.PostRegisterRequest;
+import com.nhnacademy.springjpa.domain.post.PostRequest;
 import com.nhnacademy.springjpa.entity.Post;
 import com.nhnacademy.springjpa.entity.User;
 import com.nhnacademy.springjpa.repository.PostRepository;
 import com.nhnacademy.springjpa.repository.UserRepository;
 import java.time.LocalDateTime;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -38,7 +36,7 @@ public class PostServiceImpl implements PostService {
 
     @Transactional
     @Override
-    public PostDto createPost(PostRegisterRequest postRequest) {
+    public PostDto createPost(PostRequest postRequest) {
         User user = userRepository.getUserByUserNo(postRequest.getUserNo());
         Post post = Post.addPost()
             .user(user)
@@ -54,7 +52,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostModifyDto modifyPost(Integer postNo, PostModifyRequest postRequest) {
+    public PostModifyDto modifyPost(Integer postNo, PostRequest postRequest) {
         // 관리자가 수정자가 될 수 있기 때문에 request에서 받음
         User user = userRepository.getUserByUserNo(postRequest.getUserNo());
         Post post = postRepository.getPostByPostNo(postNo);

@@ -3,13 +3,11 @@ package com.nhnacademy.springjpa.controller;
 import com.nhnacademy.springjpa.domain.Msg;
 import com.nhnacademy.springjpa.domain.post.PostDto;
 import com.nhnacademy.springjpa.domain.post.PostModifyDto;
-import com.nhnacademy.springjpa.domain.post.PostModifyRequest;
-import com.nhnacademy.springjpa.domain.post.PostRegisterRequest;
+import com.nhnacademy.springjpa.domain.post.PostRequest;
 import com.nhnacademy.springjpa.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,14 +31,14 @@ public class PostController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Msg createPost(@RequestBody PostRegisterRequest postRequest) {
+    public Msg createPost(@RequestBody PostRequest postRequest) {
         PostDto postDto = postService.createPost(postRequest);
         return Msg.success(postDto);
     }
 
     @PostMapping(value = "/modify/{postNo}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Msg modifyPost(@PathVariable("postNo") Integer postNo,
-                          @RequestBody PostModifyRequest postRequest) {
+                          @RequestBody PostRequest postRequest) {
         PostModifyDto postModifyDto = postService.modifyPost(postNo, postRequest);
         return Msg.success(postModifyDto);
     }
