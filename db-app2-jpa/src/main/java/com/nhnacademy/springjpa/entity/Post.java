@@ -1,11 +1,12 @@
 package com.nhnacademy.springjpa.entity;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,13 +42,11 @@ public class Post {
     @Column(name = "post_content")
     private String postContent;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "post_write_datetime")
-    private Date postWriteDateTime;
+    private LocalDateTime postWriteDateTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "post_modify_datetime")
-    private Date postModifyDateTime;
+    private LocalDateTime postModifyDateTime;
 
     @Column(name = "post_check_hide")
     private Boolean postCheckHide;
@@ -75,4 +75,18 @@ public class Post {
 //        comment.setPost(this);
 //        this.comments.add(comment);
 //    }
+    @Builder(builderMethodName = "addPost")
+    public static Post createPost(User user, String postTitle, String postContent, String fileName, byte[] fileData) {
+        Post post = new Post();
+        post.setUser(user);
+        post.setPostTitle(postTitle);
+        post.setPostContent(postContent);
+        post.setFileName(fileName);
+        post.setFileData(fileData);
+        post.setPostWriteDateTime(LocalDateTime.now());
+        post.setPostCheckHide(false);
+        post.setParent(0);
+        post.setDepth(0);
+        return post;
+    }
 }

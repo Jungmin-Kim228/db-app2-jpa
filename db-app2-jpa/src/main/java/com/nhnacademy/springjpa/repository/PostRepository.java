@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
+    // test purpose
     int countByPostTitleLike(String postTitle);
-    // select count(*) from Posts where post_title like '%{postTitle}'
 
     List<PostDto> getAllBy();
+
+    PostDto getByPostNo(Integer postNo);
 }

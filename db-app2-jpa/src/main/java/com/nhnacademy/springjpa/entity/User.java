@@ -1,5 +1,6 @@
 package com.nhnacademy.springjpa.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,11 +34,11 @@ public class User {
     private Boolean checkAdmin;
 
     @OneToMany(mappedBy = "user")
-    private List<Post> posts;
+    private List<Post> posts = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();;
 
     @OneToMany(mappedBy = "user")
-    private List<Good> goods;
+    private List<Good> goods = new ArrayList<>();;
 }

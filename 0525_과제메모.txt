@@ -16,3 +16,25 @@ Entity 말고 DTO 반환
 
 3) Pageable 이용
 Pagination 적용
+
+======================================================================
+
+auto_increment가 있는 애들은 repository.save 하면 db로 올라감
+아닌 애들은 1차 캐시에 저장
+그래서 아닌 애들은 flush가 필요하다
+
+
+
+
+
+
+fild null -> ""
+annotation maybe
+
+content negociation
+xml 요청, json 요청
+
+Msgconverter 다시보기
+
+
+

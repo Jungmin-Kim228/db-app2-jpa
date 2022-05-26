@@ -1,0 +1,11 @@
+POST /posts HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "userNo" : 2,
+  "postTitle" : "안녕하세요",
+  "postContent" : "처음왔습니다",
+  "fileName" : null,
+  "fileData" : null
+}

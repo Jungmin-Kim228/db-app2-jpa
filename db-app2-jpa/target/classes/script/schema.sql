@@ -61,4 +61,3 @@ insert into Posts values (null, 3, "title4", "content4", now(), null, false, nul
 insert into Posts values (null, 3, "title5", "content5", now(), null, false, null, null, 0, 0);
 insert into Posts values (null, 3, "thisIsNotTitle6", "content6", now(), null, false, null, null, 0, 0);
 
-commit;
