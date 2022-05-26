@@ -4,9 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
-import com.nhnacademy.springjpa.domain.PostDto;
-import com.nhnacademy.springjpa.entity.Post;
-import com.nhnacademy.springjpa.repository.PostRepository;
+import com.nhnacademy.springjpa.domain.CommentDto;
+import com.nhnacademy.springjpa.repository.CommentRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,27 +23,14 @@ import org.springframework.transaction.annotation.Transactional;
     @ContextConfiguration(classes = RootConfig.class),
     @ContextConfiguration(classes = WebConfig.class)
 })
-public class PostRepositoryTest {
+public class CommentRepositoryTest {
     @Autowired
-    private PostRepository postRepository;
+    CommentRepository commentRepository;
 
     @Test
-    void findAllTest() {
-        List<Post> posts = postRepository.findAll();
-        assertThat(posts.size()).isEqualTo(5);
+    void Test() {
+        List<CommentDto> commentDtos = commentRepository.getCommentsByPost_PostNo(1);
+        assertThat(commentDtos.get(0).getCommentContent()).isEqualTo("ㅇㅈ");
+        System.out.println(commentDtos.get(0).getUser().getUserId());
     }
-
-    @Test
-    void postCountTest() {
-        int postCount = postRepository.countByPostTitleLike("this%");
-        assertThat(postCount).isEqualTo(2);
-    }
-
-//    @Test
-//    void postDtoGetAllByTest() {
-//        List<PostDto> postDtos = postRepository.getAllBy();
-//        assertThat(postDtos.get(0).getComments().get(0).getCommentContent()).isEqualTo("ㅇㅈ");
-//    }
-
-
 }
