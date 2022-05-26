@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
+import com.nhnacademy.springjpa.domain.PostDto;
 import com.nhnacademy.springjpa.entity.Post;
 import com.nhnacademy.springjpa.repository.PostRepository;
 import java.util.List;
@@ -39,5 +40,9 @@ public class PostRepositoryTest {
         assertThat(postCount).isEqualTo(2);
     }
 
-
+    @Test
+    void postDtoGetAllByTest() {
+        List<PostDto> postDtos = postRepository.getAllBy();
+        assertThat(postDtos.get(0).getComments().get(0).getCommentContent()).isEqualTo("ㅇㅈ");
+    }
 }

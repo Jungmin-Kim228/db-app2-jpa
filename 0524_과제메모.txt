@@ -1,0 +1,31 @@
+
+애초에 혼자서 식별키를 2개이상 가지고 있는 경우가 복합키에 해당하고
+그 복합키가 있을 때는 @IdClass나 @EmbeddedId를 사용한다
+식별관계에서 PK를 가져온 경우에는 그냥 @MapsId만 해주면 됌
++ @MapsId에서 ("name")을 넣는 경우는 복합키가 있을 때 하면 됌
+
+
+일대일 식별관계는 자식 테이블의 기본 키값으로 부모 테이블의 기본 키값만 사용함
+그래서 부모 테이블의 기본키가 복합키가 아니면 자식 테이블의 기본키는 복합키로 구성하지
+않아도 됌
+
+==========================
+
+* 관계성을 추가할 때 조심해야할 부분
+테스트 또는 출력을 위해 toString 시 서로가 서로를 불러오려해 무한루프가 걸릴 수 있으므로
+한쪽에 @ToSTring.Exclude 처리 해줘야함
+@ToString
+@ToString.Exclude
+    @ManyToOne
+    Post post;
+
+
+private Post() {
+
+    }
+
+    @Builder(toBuilder = true)
+    public static Post createPost(String title, String content){
+        return null;
+
+    }

@@ -1,0 +1,18 @@
+1. Repository 기능 강화
+1) @Query 이용
+JPQL 쿼리 실행
+
+2) Querdsl 이용
+복잡한 쿼리 실행
+	-> 게시판 검색, userId로 검색 등등 복합적 조건에 대해 dynamic하게 처리
+
+2. Web support 적용
+1) REST API 개발 (@RestController)
+	-> 게시판 (리스트, 수정, 삭제, 댓글 등록, 수정, 삭제. . .)
+	-> 테스트 코드 (json 형태 데이터 insert)
+
+2) DTO Projection 이용
+Entity 말고 DTO 반환
+
+3) Pageable 이용
+Pagination 적용

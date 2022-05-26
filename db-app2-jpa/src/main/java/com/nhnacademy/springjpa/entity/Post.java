@@ -1,5 +1,6 @@
 package com.nhnacademy.springjpa.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -39,11 +40,11 @@ public class Post {
     @Column(name = "post_content")
     private String postContent;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "post_write_datetime")
     private Date postWriteDateTime;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "post_modify_datetime")
     private Date postModifyDateTime;
 
@@ -58,11 +59,20 @@ public class Post {
     @Column(name = "file_name")
     private String fileName;
 
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments;
+    @Column(name = "file_data")
+    private byte[] fileData;
 
     @OneToMany(mappedBy = "post")
-    private List<Good> goods;
+    private List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "post")
+    private List<Good> goods = new ArrayList<>();
 
+    @OneToMany(mappedBy = "post")
+    private List<View> views = new ArrayList<>();
+
+//    public void addComment(Comment comment){
+//        comment.setPost(this);
+//        this.comments.add(comment);
+//    }
 }
