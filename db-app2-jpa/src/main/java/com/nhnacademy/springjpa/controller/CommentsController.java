@@ -1,7 +1,6 @@
 package com.nhnacademy.springjpa.controller;
 
 import com.nhnacademy.springjpa.domain.comment.CommentDto;
-import com.nhnacademy.springjpa.domain.post.PostDto;
 import com.nhnacademy.springjpa.service.CommentService;
 import com.nhnacademy.springjpa.service.PostService;
 import java.util.List;

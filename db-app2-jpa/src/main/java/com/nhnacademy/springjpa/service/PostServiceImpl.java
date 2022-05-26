@@ -51,6 +51,7 @@ public class PostServiceImpl implements PostService {
         return postDto;
     }
 
+    @Transactional
     @Override
     public PostModifyDto modifyPost(Integer postNo, PostRequest postRequest) {
         // 관리자가 수정자가 될 수 있기 때문에 request에서 받음
@@ -68,6 +69,7 @@ public class PostServiceImpl implements PostService {
         return postModifyDto;
     }
 
+    @Transactional
     @Override
     public Integer deletePost(Integer postNo) {
         Post post = postRepository.getPostByPostNo(postNo);

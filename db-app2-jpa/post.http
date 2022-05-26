@@ -52,3 +52,15 @@ Content-Type: application/json
 GET /comments/1?page=0&size=2
 Host: localhost:8080
 Content-Type: application/json
+
+###
+# comment register sample
+POST /comment/register
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "postNo" : 7,
+  "userNo" : 4,
+  "commentContent" : "내가 좋아하는 숫자 게시글에 무플방지ㅋㅋ"
+}

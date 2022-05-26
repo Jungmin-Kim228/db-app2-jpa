@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public interface PostModifyDto {
     Integer getPostNo();
-    PostDto.UserDto getUser();
+    UserDto getUser();
     String getPostTitle();
     String getPostContent();
     @JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss")

@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer>, CommentRepositoryCustom {
     Page<CommentDto> getCommentDtosAllByPost_PostNo(Integer postNo, Pageable pageable);
+
+    CommentDto getCommentDtoByCommentNo(Integer commentNo);
 }
