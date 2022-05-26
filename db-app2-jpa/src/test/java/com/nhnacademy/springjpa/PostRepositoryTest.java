@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
-import com.nhnacademy.springjpa.domain.PostDto;
 import com.nhnacademy.springjpa.entity.Post;
 import com.nhnacademy.springjpa.repository.PostRepository;
 import java.util.List;

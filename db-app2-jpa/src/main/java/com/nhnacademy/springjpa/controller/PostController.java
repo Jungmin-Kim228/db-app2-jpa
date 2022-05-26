@@ -1,16 +1,24 @@
 package com.nhnacademy.springjpa.controller;
 
-import com.nhnacademy.springjpa.domain.PostDto;
-import com.nhnacademy.springjpa.entity.Post;
+import com.nhnacademy.springjpa.domain.Msg;
+import com.nhnacademy.springjpa.domain.post.PostDto;
+import com.nhnacademy.springjpa.domain.post.PostModifyDto;
+import com.nhnacademy.springjpa.domain.post.PostModifyRequest;
+import com.nhnacademy.springjpa.domain.post.PostRegisterRequest;
 import com.nhnacademy.springjpa.service.PostService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/posts/{postNo}")
+@RequestMapping("/post")
 public class PostController {
     private final PostService postService;
 
@@ -18,13 +26,28 @@ public class PostController {
         this.postService = postService;
     }
 
-    @ModelAttribute(value = "post", binding = false)
+    @GetMapping("/{postNo}")
     public PostDto getPost(@PathVariable("postNo") Integer postNo) {
         return postService.getPost(postNo);
     }
 
-    @GetMapping
-    public PostDto getPost(@ModelAttribute("post") PostDto post) {
-        return post;
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Msg createPost(@RequestBody PostRegisterRequest postRequest) {
+        PostDto postDto = postService.createPost(postRequest);
+        return Msg.success(postDto);
+    }
+
+    @PostMapping(value = "/modify/{postNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Msg modifyPost(@PathVariable("postNo") Integer postNo,
+                          @RequestBody PostModifyRequest postRequest) {
+        PostModifyDto postModifyDto = postService.modifyPost(postNo, postRequest);
+        return Msg.success(postModifyDto);
+    }
+
+    @PostMapping(value = "/delete/{postNo}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Msg deletePost(@PathVariable("postNo") Integer postNo) {
+        Integer deletePostNo = postService.deletePost(postNo);
+        return Msg.success(deletePostNo);
     }
 }

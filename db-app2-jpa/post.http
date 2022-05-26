@@ -1,4 +1,11 @@
-POST /posts HTTP/1.1
+# one post view
+GET /post/1
+Host: localhost:8080
+Content-Type: application/json
+
+###
+# post register sample
+POST /post/register HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
 
@@ -9,3 +16,33 @@ Content-Type: application/json
   "fileName" : null,
   "fileData" : null
 }
+
+###
+# post modify sample
+POST /post/modify/3 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "userNo" : 2,
+  "postTitle" : "모코코 성장중",
+  "postContent" : "무럭무럭",
+  "fileName" : null,
+  "fileData" : null
+}
+
+###
+# post delete sample
+POST /post/delete/4 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "postNo" : 4
+}
+
+###
+# get posts paging
+GET /posts?page=0&size=3
+Host: localhost:8080
+Content-Type: application/json
